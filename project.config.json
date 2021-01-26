@@ -2,7 +2,7 @@
   "miniprogramRoot": "./dist",
   "projectname": "mini-tools",
   "description": "mini tools",
-  "appid": "touristappid",
+  "appid": "wxdd1497ac40571131",
   "setting": {
     "urlCheck": true,
     "es6": false,

@@ -1,0 +1,46 @@
+.dial {
+  padding: 25px;
+
+  &-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
+  }
+
+  &-item {
+    display: inline-flex;
+    width: 150px;
+    height: 150px;
+    background: #f8f7fb;
+    border-radius: 20px;
+    margin-top: 24px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &-item-active {
+    background-color: #03a69a;
+    color: #fff;
+  }
+
+  &-action {
+    position: fixed;
+    left: 25px;
+    right: 25px;
+    bottom: calc(48px + constant(safe-area-inset-bottom));
+    bottom: calc(48px + env(safe-area-inset-bottom));
+  }
+
+  &-switch {
+    margin: 24px 0;
+    switch {
+      margin-left: 24px;
+    }
+  }
+}
+
+.btn {
+  background-color: #03a69a;
+  color: #fff;
+}

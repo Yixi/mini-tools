@@ -1,9 +1,14 @@
 import { Component } from 'react'
+import Taro from '@tarojs/taro'
 import './app.scss'
 
 class App extends Component {
 
-  componentDidMount () {}
+  componentDidMount () {
+    Taro.cloud.init({
+      env: 'tools-6gld6gv529a23663'
+    })
+  }
 
   componentDidShow () {}
 
