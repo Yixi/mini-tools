@@ -32,7 +32,6 @@ export default class Award extends Component<{}, IState> {
   componentDidMount() {
     Taro.cloud.database().collection('UserAwards').get().then(res => {
       const data = res.data
-      console.log(data)
       this.setState({
         data: data.map(d => ({
           name: d.name,
