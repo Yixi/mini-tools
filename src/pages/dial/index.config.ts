@@ -1,3 +1,3 @@
 export default {
-  navigationBarTitleText: '抽奖'
+  navigationBarTitleText: '摇车'
 }

@@ -5,11 +5,11 @@ import {View, Button, Switch} from '@tarojs/components'
 import './index.scss'
 
 type IState = {
-  morning: string[],
-  afternoon: string[],
-  active: string[],
-  rolling: boolean,
-  isAfternoon: boolean
+  morning?: string[],
+  afternoon?: string[],
+  active?: string[],
+  rolling?: boolean,
+  isAfternoon?: boolean
 };
 
 export default class Index extends Component<{}, IState> {

@@ -1,6 +1,8 @@
 export default {
   pages: [
-    'pages/dial/index'
+    'pages/home/index',
+    'pages/dial/index',
+    'pages/award/index'
   ],
   window: {
     backgroundTextStyle: 'light',
