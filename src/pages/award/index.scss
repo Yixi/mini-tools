@@ -17,6 +17,7 @@
     margin-top: 24px;
     align-items: center;
     justify-content: center;
+    transition: all .1s linear;
   }
 
   &-item-active {
@@ -79,8 +80,12 @@
     }
 
     &-action {
+      position: absolute;
+      top: calc(10vh + 80vw + 100px);
+      left: 10vw;
+      right: 10vw;
       animation-delay: 1.3s;
-      animation-duration: 0.2s;
+      animation-duration: 1s;
       animation-fill-mode: both;
       animation-name: fadeIn;
       .btn {
