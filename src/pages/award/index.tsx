@@ -9,6 +9,7 @@ type Item = {
   name: string,
   award: string,
   showed: boolean,
+  color?: string
 }
 
 type IState = {
@@ -36,6 +37,7 @@ export default class Award extends Component<{}, IState> {
         data: data.map(d => ({
           name: d.name,
           award: d.award,
+          color: d.color,
           showed: false
         }))
       })
@@ -43,8 +45,11 @@ export default class Award extends Component<{}, IState> {
   }
 
   onStart = () => {
-    this.setState({
-      staring: true
+    this.setState(prevState => {
+      return {
+        staring: true,
+        data: prevState.data.map(d => ({...d, showed: false})),
+      }
     }, () => {
       this.onNext()
     })
@@ -55,7 +60,11 @@ export default class Award extends Component<{}, IState> {
       looping: true,
       showBoard: false,
     })
-    this.loop(15)
+    if (this.nowShowedData.length <= 1) {
+      this.loop(1)
+    } else {
+      this.loop(15)
+    }
   }
 
   get nowShowedData() {
@@ -65,24 +74,26 @@ export default class Award extends Component<{}, IState> {
   loop = (times: number) => {
     let count = 0
     const random = () => {
-      this.setState(({
+      this.setState({
         active: sample(this.nowShowedData)
-      }))
-      count++
-      if (count < times) {
-        setTimeout(random, 100)
-      } else {
-        this.setState(prevState => {
-          const item = find(this.state.data, {name: this.state.active.name})
-          console.log(item)
-          item.showed = true
-          return {
-            looping: false,
-            data: prevState.data,
-            showBoard: true
-          }
-        })
-      }
+      }, () => {
+        count++
+        if (count < times) {
+          setTimeout(random, 100)
+        } else {
+          this.setState(prevState => {
+            const item = find(this.state.data, {name: this.state.active.name})
+            console.log(item)
+            item.showed = true
+            return {
+              looping: false,
+              data: prevState.data,
+              showBoard: true
+            }
+          })
+        }
+      })
+
     }
     random()
   }
@@ -93,7 +104,6 @@ export default class Award extends Component<{}, IState> {
       return {
         data: prevState.data.map(d => ({...d, showed: false})),
         staring: false,
-        pointer: 0
       }
     })
   }
@@ -121,7 +131,7 @@ export default class Award extends Component<{}, IState> {
           ))}
         </View>
         <View className='award-action'>
-          {this.state.staring ?
+          {this.state.staring && this.nowShowedData.length > 0 ?
             <Button className='btn' onClick={this.onNext} disabled={this.state.looping}>下一个</Button> :
             <Button className='btn' onClick={this.onStart}>开始</Button>
           }
@@ -131,7 +141,7 @@ export default class Award extends Component<{}, IState> {
         {this.state.showBoard && (
           <View>
             <View className='award-board-overlay' onClick={this.onClose}/>
-            <View className='award-board'>
+            <View className='award-board' style={{backgroundColor: this.state.active.color}}>
               <View>
                 <View>{this.state.active.name}</View>
                 <View>{this.state.active.award}</View>
