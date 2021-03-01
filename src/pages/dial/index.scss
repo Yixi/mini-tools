@@ -1,5 +1,6 @@
 .dial {
   padding: 25px;
+  display: flex;
 
   &-items {
     display: flex;
@@ -25,6 +26,7 @@
     color: #fff;
   }
 
+
   &-action {
     position: fixed;
     left: 25px;
@@ -33,8 +35,16 @@
     bottom: calc(48px + env(safe-area-inset-bottom));
   }
 
+  &-vip {
+    text + text {
+      margin-left: 10px;
+      color: #E8624B;
+    }
+  }
+
   &-switch {
     margin: 24px 0;
+
     switch {
       margin-left: 24px;
     }
