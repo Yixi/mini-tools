@@ -1,5 +1,5 @@
 .dial {
-  padding: 25px;
+  padding: 12.5px;
   display: flex;
 
   &-items {
@@ -11,11 +11,11 @@
 
   &-item {
     display: inline-flex;
-    width: 150px;
-    height: 150px;
+    width: 75px;
+    height: 75px;
     background: #f8f7fb;
-    border-radius: 20px;
-    margin-top: 24px;
+    border-radius: 10px;
+    margin-top: 12px;
     align-items: center;
     justify-content: center;
     transition: all .1s linear;
@@ -29,24 +29,24 @@
 
   &-action {
     position: fixed;
-    left: 25px;
-    right: 25px;
-    bottom: calc(48px + constant(safe-area-inset-bottom));
-    bottom: calc(48px + env(safe-area-inset-bottom));
+    left: 12.5px;
+    right: 12.5px;
+    bottom: calc(24px + constant(safe-area-inset-bottom));
+    bottom: calc(24px + env(safe-area-inset-bottom));
   }
 
   &-vip {
     text + text {
-      margin-left: 10px;
+      margin-left: 5px;
       color: #E8624B;
     }
   }
 
   &-switch {
-    margin: 24px 0;
+    margin: 12px 0;
 
     switch {
-      margin-left: 24px;
+      margin-left: 12px;
     }
   }
 }

@@ -1,0 +1,14 @@
+.wrapper {
+  padding: 24px;
+}
+
+.log {
+  font-size: 9px;
+  word-break: break-all;
+  text {
+    color: #FF4F49;
+  }
+  & + & {
+    margin-top: 5px;
+  }
+}

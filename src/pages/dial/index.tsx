@@ -1,7 +1,8 @@
-import React, {Component} from 'react'
+// @ts-ignore
+import React, { Component } from 'react'
 import Taro from '@tarojs/taro'
-import {shuffle, includes, random} from 'lodash'
-import {View, Button, Switch, Text} from '@tarojs/components'
+import { shuffle, includes, random } from 'lodash'
+import { View, Button, Switch, Text } from '@tarojs/components'
 import './index.scss'
 
 type IData = { name: string, weight: number, isAfternoon: boolean, recharge: number }
@@ -14,7 +15,7 @@ type IState = {
   isAfternoon?: boolean
 };
 
-export default class Index extends Component<{}, IState> {
+export default class Index extends Component<null, IState> {
 
   state = {
     morning: [],
@@ -89,7 +90,7 @@ export default class Index extends Component<{}, IState> {
       if (count < times) {
         setTimeout(randomLoop, 100)
       } else {
-        this.setState({rolling: false})
+        this.setState({ rolling: false })
         Taro.cloud.database().collection('UserListActiveLog').add({
           data: {
             time: new Date(),
@@ -101,7 +102,7 @@ export default class Index extends Component<{}, IState> {
     randomLoop()
   }
 
-  onTypeChange = ({detail}) => {
+  onTypeChange = ({ detail }) => {
     this.setState({
       isAfternoon: detail.value,
       active: []
@@ -116,7 +117,7 @@ export default class Index extends Component<{}, IState> {
       <View className='dial'>
         <View className='dial-items'>
           {this.data.map(d => (
-            <View className={`dial-item ${includes(this.state.active, d) ? 'dial-item-active' : ''}`}>{d.name}</View>
+            <View className={`dial-item ${includes(this.state.active, d) ? 'dial-item-active' : ''}`} key={d.name}>{d.name}</View>
           ))}
         </View>
         <View className='dial-action'>
@@ -129,7 +130,7 @@ export default class Index extends Component<{}, IState> {
           </View>
           <View className='dial-switch'>
             {this.state.isAfternoon ? '晚上' : '早晨'}
-            <Switch color='#03a69a' onChange={this.onTypeChange} disabled={this.state.rolling}/>
+            <Switch color='#03a69a' onChange={this.onTypeChange} disabled={this.state.rolling} />
           </View>
           <Button onClick={this.onSubmit} className='btn' disabled={this.state.rolling}>开始</Button>
         </View>
