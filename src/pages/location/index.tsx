@@ -9,12 +9,18 @@ import LocationMap from './map'
 const LocationPage: React.FC = () => {
 
   const [locations, setLocations] = useState<any[]>([])
+  const [refresherTriggered, setRefresherTriggered] = useState(false)
 
   usePullDownRefresh(() => {
     fetchMyLocation().then(() => {
       Taro.stopPullDownRefresh()
     })
   })
+
+  const onRefresh = () => {
+    setRefresherTriggered(true)
+    fetchMyLocation().finally(() => setRefresherTriggered(false))
+  }
 
   useEffect(() => {
     let lastTimer = dayjs().unix()
@@ -64,7 +70,14 @@ const LocationPage: React.FC = () => {
 
   return (
     <View className={styles.wrapper}>
-      <ScrollView scrollY className={styles['logs-wrapper']}>
+      <ScrollView
+        className={styles['logs-wrapper']}
+        scrollY
+        enableBackToTop
+        refresherEnabled
+        onRefresherRefresh={onRefresh}
+        refresherTriggered={refresherTriggered}
+      >
         <View className={styles.logs}>
           {locations.map(l => (
             <View key={l._id} className={styles.log}>
