@@ -12,7 +12,8 @@ type IState = {
   afternoon?: IData  [],
   active?: IData[],
   rolling?: boolean,
-  isAfternoon?: boolean
+  isAfternoon?: boolean,
+  dailCount?: number,
 };
 
 export default class Index extends Component<null, IState> {
@@ -22,7 +23,8 @@ export default class Index extends Component<null, IState> {
     afternoon: [],
     active: [],
     rolling: false,
-    isAfternoon: false
+    isAfternoon: false,
+    dailCount: 1,
   }
 
   componentDidMount() {
@@ -39,6 +41,11 @@ export default class Index extends Component<null, IState> {
         morning: parsedData,
         afternoon: parsedData.filter(d => d.isAfternoon)
       })
+    })
+
+    Taro.cloud.database().collection('config').get().then(res => {
+      const data = res.data
+      this.setState({ dailCount: data[0].dialCount || 1 })
     })
   }
 
@@ -84,7 +91,7 @@ export default class Index extends Component<null, IState> {
     let count = 0
     const randomLoop = () => {
       this.setState(({
-        active: this.sampleSize(3)
+        active: this.sampleSize(this.state.dailCount)
       }))
       count++
       if (count < times) {

@@ -9,7 +9,7 @@ const HomePage: React.FC = () => {
   const menu = [
     {
       label: '摇车',
-      image: 'cloud://tools-6gld6gv529a23663.746f-tools-6gld6gv529a23663-1304861075/3.png',
+      image: 'cloud://cloud1-0gfg77s3f4c83c23.636c-cloud1-0gfg77s3f4c83c23-1304861075/3.png',
       url: '/pages/dial/index'
     },
     // {
@@ -17,11 +17,11 @@ const HomePage: React.FC = () => {
     //   image: 'cloud://tools-6gld6gv529a23663.746f-tools-6gld6gv529a23663-1304861075/2.png',
     //   url: '/pages/award/index'
     // },
-    {
-      label: '老大哥看着你',
-      image: 'cloud://tools-6gld6gv529a23663.746f-tools-6gld6gv529a23663-1304861075/1.png',
-      url: '/pages/location/index'
-    }
+    // {
+    //   label: '老大哥看着你',
+    //   image: 'cloud://tools-6gld6gv529a23663.746f-tools-6gld6gv529a23663-1304861075/1.png',
+    //   url: '/pages/location/index'
+    // }
   ]
 
   const goTo = (url: string) => {
@@ -41,13 +41,6 @@ const HomePage: React.FC = () => {
             </View>
           ))
         }
-      </View>
-      <View className={styles.pay}>
-        <Image
-          src='cloud://tools-6gld6gv529a23663.746f-tools-6gld6gv529a23663-1304861075/pay.jpeg'
-          mode='aspectFit'
-          showMenuByLongpress
-        />
       </View>
     </View>
   )

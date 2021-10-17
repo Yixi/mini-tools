@@ -6,7 +6,7 @@ class App extends Component {
 
   componentDidMount () {
     Taro.cloud.init({
-      env: 'tools-6gld6gv529a23663'
+      env: 'cloud1-0gfg77s3f4c83c23'
     })
   }
 
